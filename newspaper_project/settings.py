@@ -32,8 +32,13 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    # custom apps
     'users.apps.UsersConfig', # added users app
     'pages.apps.PagesConfig', # added pages app
+    # 3rd party apps
+    'crispy_forms', # added crispy forms for better form rendering
+    'crispy_bootstrap5', # bootstrap5 template pack for crispy forms
+    # default django apps
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -129,3 +134,7 @@ AUTH_USER_MODEL = 'users.CustomUser'
 
 LOGIN_REDIRECT_URL = 'home' # Redirect to home after login
 LOGOUT_REDIRECT_URL = 'home' # Redirect to home after logout
+
+# Crispy Forms settings
+CRISPY_ALLOWED_TEMPLATE_PACKS = 'bootstrap5'
+CRISPY_TEMPLATE_PACK = 'bootstrap5'
