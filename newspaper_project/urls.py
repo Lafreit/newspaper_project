@@ -20,6 +20,6 @@ from django.urls import path, include # include function to include other URLcon
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('users/', include('users.urls')), # include users app URLs
-    path('users/', include('django.contrib.auth.urls')), # include built-in auth URLs
+    path('accounts/', include('django.contrib.auth.urls')), # include built-in auth URLs
     path('', include('pages.urls')), # include pages app URLs
 ]
