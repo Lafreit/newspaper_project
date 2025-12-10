@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     # custom apps
     'users.apps.UsersConfig', # added users app
     'pages.apps.PagesConfig', # added pages app
+    'articles.apps.ArticlesConfig', # added articles app
     # 3rd party apps
     'crispy_forms', # added crispy forms for better form rendering
     'crispy_bootstrap5', # bootstrap5 template pack for crispy forms
@@ -110,9 +111,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'pt-br' # set to Brazilian Portuguese
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Sao_Paulo' # set to Sao Paulo time zone
 
 USE_I18N = True
 
