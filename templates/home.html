@@ -15,4 +15,13 @@
     <p><button type="submit"><a href="{% url 'login' %}">Log In</a></button></p>
     <p><button type="submit"><a href="{% url 'signup'%}">Sign Up</a></button></p>
 {% endif %}
+<div class="jumbotron0">
+    <h1 class="display-4">Seja bem-vindo ao Newspaper App!</h1>
+    <p class="lead">Sua plataforma para criar, editar e gerenciar artigos de forma simples e eficiente.</p>
+    <hr class="my-4">
+    <p class="lead">
+        <a class="btn btn-primary btn-lg" href="{% url 'article_list' %}" role="button">Veja os Artigos</a>
+        <a class="btn btn-success btn-lg" href="{% url 'article_new' %}" role="button">Crie um Novo Artigo</a>
+    </p>
+</div>
 {% endblock content %}

@@ -1,12 +1,12 @@
-<!-- templates/article_edit.html -->
+<!-- templates/article_new.html -->
 {% extends "base.html" %}
 
 {% block content %}
 
-<h1>Editar</h1>
+<h1>Novo Artigo</h1>
 <form action="" method="post">
     {% csrf_token %}
     {{ form.as_p }}
-    <button class="btn btn-info ml-2" type="submit">Atualizar</button>
+    <button class="btn btn-success ml-2" type="submit">Criar</button>
 </form>
 {% endblock content %}

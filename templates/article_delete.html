@@ -1,0 +1,13 @@
+<!-- templates/article_delete.html -->
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>Deletar</h1>
+<form action="" method="post">
+    {% csrf_token %}
+    <p>Tem certeza que deseja deletar o artigo "{{ article.title }}"?</p>
+    <button class="btn btn-danger ml-2" type="submit">Confirmar</button>
+</form>
+<!-- <p>Voltar para <a href="{% url 'article_list' %}">Lista de Artigos</a></p> -->
+{% endblock content %}

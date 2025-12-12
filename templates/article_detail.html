@@ -1,0 +1,14 @@
+<!-- templates/article_detail.html-->
+ {% extends "base.html" %}
+
+{% block content %}
+<div class="article-entry">
+    <h2>{{ object.title }}</h2>
+    <p> por {{ object.author }} | {{ object.date }}</p>
+    <p>{{ object.body }}</p>
+</div>
+<p><a href="{% url 'article_edit' object.pk %}">Editar</a> |
+<a href="{% url 'article_delete' object.pk %}">Deletar</a>
+</p>
+<p>Voltar para <a href="{% url 'article_list' %}">Lista de Artigos</a></p>
+{% endblock content %}
