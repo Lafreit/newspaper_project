@@ -1,0 +1,22 @@
+.comments-section {
+    border-top: 2px solid #ddd;
+    padding-top: 20px;
+    margin-top: 30px;
+}
+
+.comments-title {
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+}
+
+.comments-list {
+    background: #f9f9f9;
+    padding: 15px;
+    border-radius: 6px;
+}
+
+.comment-item {
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 4px;
+}
