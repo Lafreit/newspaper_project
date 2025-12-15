@@ -1,0 +1,112 @@
+/* ============================
+   ESTILO GLOBAL
+============================ */
+body {
+    background-color: #f5f5f5;
+    font-family: "Segoe UI", Roboto, Arial, sans-serif;
+    line-height: 1.6;
+}
+
+/* ============================
+   NAVBAR
+============================ */
+.navbar-brand {
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+/* ============================
+   CARDS DE ARTIGOS
+============================ */
+.card {
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.card-header {
+    background: #fafafa;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.card-body {
+    background: #ffffff;
+}
+
+.card-body p {
+    margin-bottom: 1rem;
+}
+
+/* Botões */
+.btn-primary {
+    background-color: #0056b3;
+    border-color: #004a9c;
+}
+
+.btn-danger {
+    background-color: #c82333;
+    border-color: #bd2130;
+}
+
+/* ============================
+   COMENTÁRIOS
+============================ */
+.comments-section {
+    border-top: 2px solid #e5e5e5;
+    padding: 20px;
+    background: #fafafa;
+}
+
+.comments-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.comments-list {
+    background: #ffffff;
+    padding: 15px;
+    border-radius: 6px;
+    border: 1px solid #e5e5e5;
+}
+
+.comment-item {
+    background: #fdfdfd;
+    border: 1px solid #eaeaea;
+    border-radius: 4px;
+    padding: 10px;
+    transition: background 0.2s ease;
+}
+
+.comment-item:hover {
+    background: #f3f3f3;
+}
+
+/* ============================
+   FORMULÁRIOS
+============================ */
+form input, form textarea {
+    border-radius: 6px !important;
+}
+
+form button {
+    margin-top: 10px;
+}
+
+/* ============================
+   RODAPÉ (caso queira usar)
+============================ */
+footer {
+    margin-top: 40px;
+    padding: 20px;
+    text-align: center;
+    color: #777;
+}
+
+/* Ajustes adicionais */
+form textarea {
+    resize: vertical;
+}
+
+.comments-section {
+    margin-top: 30px;
+}

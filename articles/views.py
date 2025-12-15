@@ -1,21 +1,75 @@
 # articles/views.py
-from django.contrib.auth.mixins import LoginRequiredMixin # for requiring login
-from django.core.exceptions import PermissionDenied
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin # for login and permission handling
+from django.core.exceptions import PermissionDenied # for permission handling
+from django.shortcuts import redirect # for redirecting
 from django.views.generic import ListView, DetailView # for list and detail views
 from django.views.generic.edit import UpdateView, CreateView, DeleteView # for edit, create, and delete views
 from django.urls import reverse_lazy # for redirecting after delete
-from .models import Article
+from .models import Article, Comment
+from.forms import CommentForm
 
 class ArticleListView(LoginRequiredMixin, ListView):
     model = Article
     template_name = 'article_list.html' # specify your template name/location
     login_url = '/accounts/login/'  # redirect to login if not authenticated
 
+#----------------------------------
+# Detalhe do artigo + comentários
+#----------------------------------
 class ArticleDetailView(LoginRequiredMixin, DetailView):
     model = Article
     template_name = 'article_detail.html' # specify your template name/location
     login_url = '/accounts/login/'  # redirect to login if not authenticated
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["form"] = CommentForm()
+        return context
+
+    def post(self, request, *args, **kwargs):
+        self.object = self.get_object()
+
+        if not request.user.is_authenticated:
+            return redirect("login")
+
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.author = request.user
+            comment.article = self.object
+            comment.save()
+            return redirect("article_detail", pk=self.object.pk)
+
+        context = self.get_context_data(form=form)
+        return self.render_to_response(context)
+# ---------------------------
+# EDITAR COMENTÁRIO
+# ---------------------------
+class CommentUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+    model = Comment
+    fields = ("comment",)
+    template_name = "comment_edit.html"
+
+    def test_func(self):
+        comment = self.get_object()
+        return comment.author == self.request.user or self.request.user.is_superuser
+
+    def get_success_url(self):
+        return reverse_lazy("article_detail", kwargs={"pk": self.object.article.pk})
+
+# ---------------------------
+# EXCLUIR COMENTÁRIO
+# ---------------------------
+class CommentDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+    model = Comment
+    template_name = "comment_delete.html"
+
+    def test_func(self):
+        comment = self.get_object()
+        return comment.author == self.request.user or self.request.user.is_superuser
+
+    def get_success_url(self):
+        return reverse_lazy("article_detail", kwargs={"pk": self.object.article.pk})
 class ArticleUpdateView(LoginRequiredMixin, UpdateView):
     model = Article
     fields = ['title', 'body'] # fields to be edited

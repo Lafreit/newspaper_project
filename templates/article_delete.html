@@ -1,5 +1,6 @@
 <!-- templates/article_delete.html -->
 {% extends "base.html" %}
+{% load static %}
 
 {% block content %}
 
@@ -9,5 +10,6 @@
     <p>Tem certeza que deseja deletar o artigo "{{ article.title }}"?</p>
     <button class="btn btn-danger ml-2" type="submit">Confirmar</button>
 </form>
-<!-- <p>Voltar para <a href="{% url 'article_list' %}">Lista de Artigos</a></p> -->
+<br>
+<p>Se não, volte para a <a href="{% url 'article_list' %}">Lista de Artigos</a>.</p>
 {% endblock content %}
